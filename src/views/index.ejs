@@ -1,0 +1,127 @@
+<% include partials/_header %>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-5">
+            <div class="card">
+                <div class="card-body">
+                    <form action="/submit" method="POST">
+                        <div class=form-group>
+                            <input type="text" name="name" placeholder="Insert Your Name" class="form-control">
+                        </div>
+
+                        <div class=form-group>
+                            <input type="number" min="10" max="80" name="age" placeholder="Insert Your Age"
+                                class="form-control">
+                        </div>
+
+                        <div class=form-group>
+                            <input type="text" name="city" placeholder="Insert Your City" class="form-control">
+                        </div>
+
+                        <div class=form-group>
+                            <input type="text" name="home_address" placeholder="Insert Your Home Address"
+                                class="form-control">
+                        </div>
+
+                        <div class=form-group>
+                            <input type="email" name="email" placeholder="Insert Your Email" class="form-control">
+                        </div>
+
+                        <div class=form-group>
+                            <select name="products" size="4" multiple class="form-control">
+                                <option value="papas">Papas</option>
+                                <option value="papitas">Papitas</option>
+                                <option value="papotas">Papotas</option>
+                                <option value="azucar">Azúcar</option>
+                                <option value="ron">Ron</option>
+                                <option value="pan">Pan</option>
+                                <option value="vino">Vino</option>
+                                <option value="paletas">Paletas</option>
+                                <option value="palitos de paleta">Palitos de paleta</option>
+                                <option value="pollo">Pollo</option>
+                                <option value="RX1000-18289AZ">RX1000-18289AZ</option>
+                                <option value="RX1000-18289AS">RX1000-18289AS</option>
+                                <option value="RX1000-18289AA">RX1000-18289AA</option>
+                                <option value="RX1000-18289AR">RX1000-18289AR</option>
+                                <option value="RX1000-18289AQ">RX1000-18289AQ</option>
+                                <option value="RX1000-18289AG">RX1000-18289AG</option>
+                                <option value="RX1000-18289">RX1000-18289</option>
+                                <option value="RX1000-PREMIUM">RX1000-PREMIUM</option>
+                                <option value="roca del rio">rocas del rio</option>
+                                <option value="camisa apretada dama">camisa apretada dama</option>
+                                <option value="camisa apretada caballero">camisa apretada caballero</option>
+                                <option value="camisa holgada dama">camisa apretada caballero</option>
+                                <option value="camisa holgada caballero">camisa apretada caballero</option>
+                                <option value="natilla">natilla</option>
+                                <option value="bunyelos">bunyelos</option>
+                                <option value="cedula falsa">cedula falsa</option>
+                                <option value="PRODA1">PRODA1</option>
+                                <option value="PRODA2">PRODA2</option>
+                                <option value="cable UTP cat 5e">cable UTP cat 5e</option>
+                                <option value="cable UTP cat 6">cable UTP cat 6</option>
+                                <option value="alicate">alicate</option>
+                                <option value="caiman">caiman</option>
+                                <option value="saludo">saludo</option>
+                                <option value="buenos dias">buenos dias</option>
+                                <option value="navaja">navaja</option>
+                                <option value="carrito verde">carrito verde</option>
+                                <option value="carrito azul">carrito azul</option>
+                                <option value="carrito rojo">carrito rojo</option>
+                                <option value="carrito morado">carrito morado</option>
+                                <option value="disfraz de batman">disfraz de batman</option>
+                                <option value="disfraz de superman">disfraz de superman</option>
+                                <option value="disfraz de spidey">disfraz de spidey</option>
+                                <option value="clase conceptual">clase conceptual</option>
+                                <option value="ropa nueva">ropa nueva</option>
+                                <option value="ropa vieja">ropa vieja</option>
+                                <option value="ropa usada">ropa usada</option>
+                                <option value="ropa casi nueva">ropa casi nueva</option>
+                                <option value="ropa de bebe">ropa de bebe</option>
+                                <option value="ropita">ropita</option>
+                                <option value="ceda dental">ceda dental</option>
+                            </select>
+                        </div>
+
+                        <div class=form-group>
+                            <textarea name="text" placeholder="Insert Your Opinion" class="form-control"></textarea>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary btn-block">Send</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-5">
+            <table class="table table-bordered table-hover">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Products</th>
+                        <th>Opinion</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% for(var i = 0; i < surveys.length; ++i) { %>
+                    <tr>
+                        <td><%= surveys[i].name %></td>
+                        <td>
+                            <ul>
+                            <% for(var j = 0; j < surveys[i].products.length; ++j) { %>
+                                <li>
+                                    <%= surveys[i].products[j] %>
+                                </li>
+                            <% } %>
+                            </ul>
+                        </td>
+                        <td><%= surveys[i].text  %></td>
+                    </tr>
+                    <% } %>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<% include partials/_footer %>
