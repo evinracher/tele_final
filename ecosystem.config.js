@@ -1,7 +1,7 @@
 module.exports = {
   apps: [{
     name: 'tele_app',
-    script: '.src/app.js'
+    script: './src/app.js'
   }],
   deploy: {
     production: {
