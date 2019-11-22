@@ -10,20 +10,23 @@ router.get('/', async (req, res) => {
 
 // SURVEYS
 router.get('/surveys', async (req, res) => {
-    console.log('here');
     const surveys = await Survey.find();
     res.render('surveys', { surveys });
 });
 
 router.get('/survey/new', async (req, res) => {
     const products = await Product.find();
-    res.render('survey_new', { products });
+    res.render('survey_new', { products, warnings: '' });
 });
 
 router.post('/survey/new', async (req, res) => {
     const survey = new Survey(req.body);
-    await survey.save();
-    res.render('index');
+    await survey.save().then((value) => {
+        res.render('index');
+    }).catch(async (reason) => {
+        const products = await Product.find();
+        res.render('survey_new', { products, warnings: '' + reason });
+    });
 });
 
 // PRODUCTS
@@ -33,13 +36,16 @@ router.get('/products', async (req, res) => {
 });
 
 router.get('/product/new', async (req, res) => {
-    res.render('product_new');
+    res.render('product_new', { warnings: '' });
 });
 
 router.post('/product/new', async (req, res) => {
     const product = new Product(req.body);
-    await product.save();
-    res.render('index');
+    await product.save().then((value) => {
+        res.render('index');
+    }).catch((reason) => {
+        res.render('product_new', { warnings: '' + reason });
+    });
 });
 
 router.get('/product/delete/:id', async (req, res) => {
