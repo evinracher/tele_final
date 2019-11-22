@@ -1,0 +1,51 @@
+<% include partials/_header %>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-5 offset-md-3">
+            <div class="card">
+                <div class="card-body">
+                    <form action="/survey/new" method="POST">
+                        <div class=form-group>
+                            <input type="text" name="name" placeholder="Insert Your Name" class="form-control">
+                        </div>
+
+                        <div class=form-group>
+                            <input type="number" min="10" max="80" name="age" placeholder="Insert Your Age"
+                                class="form-control">
+                        </div>
+
+                        <div class=form-group>
+                            <input type="text" name="city" placeholder="Insert Your City" class="form-control">
+                        </div>
+
+                        <div class=form-group>
+                            <input type="text" name="home_address" placeholder="Insert Your Home Address"
+                                class="form-control">
+                        </div>
+
+                        <div class=form-group>
+                            <input type="email" name="email" placeholder="Insert Your Email" class="form-control">
+                        </div>
+
+                        <div class=form-group>
+                            <select name="products" multiple class="form-control">
+                                <% for(var i = 0; i < products.length; ++i) { %>
+                                <option value="<%= products[i].name %>"><%= products[i].name %></option>
+                                <% } %>
+                            </select>
+                        </div>
+
+                        <div class=form-group>
+                            <textarea name="text" placeholder="Insert Your Opinion" class="form-control"></textarea>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary btn-block">Send</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<% include partials/_footer %>

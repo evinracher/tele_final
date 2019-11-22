@@ -1,0 +1,44 @@
+<% include partials/_header %>
+
+<div class="container">
+    <div class="row">
+        <div class="col-auto">
+            <table class="table table-bordered table-hover">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Age</th>
+                        <th>City</th>
+                        <th>Home Address</th>
+                        <th>Email</th>
+                        <th>Products</th>
+                        <th>Opinion</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% for(var i = 0; i < surveys.length; ++i) { %>
+                    <tr>
+                        <td><%= surveys[i].name %></td>
+                        <td><%= surveys[i].age %></td>
+                        <td><%= surveys[i].city %></td>
+                        <td><%= surveys[i].home_address %></td>
+                        <td><%= surveys[i].email %></td>
+                        <td>
+                            <ul>
+                            <% for(var j = 0; j < surveys[i].products.length; ++j) { %>
+                                <li>
+                                    <%= surveys[i].products[j] %>
+                                </li>
+                            <% } %>
+                            </ul>
+                        </td>
+                        <td><%= surveys[i].text  %></td>
+                    </tr>
+                    <% } %>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<% include partials/_footer %>

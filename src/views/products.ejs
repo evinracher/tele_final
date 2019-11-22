@@ -1,0 +1,33 @@
+<% include partials/_header %>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-5 offset-md-3">
+            <table class="table table-bordered table-hover">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Options</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% for(var i = 0; i < products.length; ++i) { %>
+                    <tr>
+                        <td>
+                            <%= products[i].name %>
+                        </td>
+
+                        <td>
+                            <a class="btn btn-warning" href="/product/delete/<%= products[i]._id %>" role="button">
+                                Delete
+                            </a>
+                        </td>
+                    </tr>
+                    <% } %>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<% include partials/_footer %>
